@@ -47,12 +47,79 @@ Zelfde melding als op de laadpaalpagina's van offertes.kvinl.nl:
   bewaard/doorgegeven aan offertes.kvinl.nl om te meten welke advertenties werken.
 
 ## Te doen
-- [ ] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
+- [x] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
 - [ ] Bouwsessie: cookiemelding zoals hierboven, privacyverklaring aanvullen. Laat het de eigenaar zien voor live.
 - [ ] Ads-sessie: `gc=yes` overnemen in de leads-app (na akkoord eigenaar over de privacytekst).
 - [ ] Ads-sessie: advertentie goedgekeurd? → eigenaar melden "klaar om aan te zetten".
+
+## Voorstel YOOST
+
+Uitgangspunt: eerlijk zeggen dat namen van bewoners niet te zien zijn. Dat voorkomt klikken van mensen die
+een naam zoeken (kosten zonder resultaat) en afkeuring door Google. Alles wat beloofd wordt, staat echt op de
+site: bouwjaar, oppervlakte, WOZ (buurtgemiddelde), buurtcijfers, luchtfoto, straatbeeld en vergunningen.
+
+### Zoekwoorden
+
+Alleen exact, zoals de eigenaar wil:
+
+- `[wie woont er op dit adres]` (staat al in de campagne)
+
+Mogelijke uitbreiding later, ook exact en alleen na een goede eerste meting (eigen advertentiegroep per
+onderwerp, met de bijbehorende gids als landingspagina):
+
+| Zoekwoord | Landingspagina |
+|---|---|
+| `[wie woont op dit adres]` | https://wiewoonteropditadres.nl/ |
+| `[bouwjaar huis opzoeken]` | https://wiewoonteropditadres.nl/bouwjaar-huis-opzoeken/ |
+| `[eigenaar huis opzoeken]` | https://wiewoonteropditadres.nl/eigenaar-huis-opzoeken/ |
+| `[bezwaar vergunning buren]` | https://wiewoonteropditadres.nl/bezwaar-vergunning-buren/ |
+
+### Uitsluitingen (zinsdeel)
+
+Al in de campagne: telefoonnummer, naam, namen, achternaam, persoon, e-mail, telefoongids.
+
+Voorstel om toe te voegen: bewoner, bewoners, wie woont daar, adres van iemand, gratis personen zoeken,
+bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varianten uitsluiten.
+
+### Koppen (max. 30 tekens)
+
+| # | Kop | Tekens | Vastzetten |
+|---|---|---|---|
+| 1 | Wie woont er op dit adres? | 26 | positie 1 (staat al) |
+| 2 | Bouwjaar en WOZ per adres | 25 | |
+| 3 | Vergunningen in de buurt | 24 | |
+| 4 | Gratis en zonder account | 24 | |
+| 5 | Luchtfoto en straatbeeld | 24 | |
+| 6 | Alles over woning en buurt | 26 | |
+| 7 | Bouwt je buurman iets? | 22 | |
+| 8 | Typ een adres, zie alles | 24 | |
+| 9 | Alleen openbare gegevens | 24 | |
+| 10 | Buurtcijfers van het CBS | 24 | |
+
+### Beschrijvingen (max. 90 tekens)
+
+| # | Beschrijving | Tekens | Vastzetten |
+|---|---|---|---|
+| 1 | Wie er woont mag niemand tonen. Bekijk wél bouwjaar, oppervlakte en buurtcijfers. | 81 | positie 1 (staat al) |
+| 2 | Typ een adres en zie ook de vergunningen bij de buren. Snel en zonder account. | 78 | |
+| 3 | Luchtfoto, straatbeeld, WOZ in de buurt en wie er in de buurt woont, in cijfers. | 80 | |
+| 4 | Gegevens van de overheid: BAG, CBS en Officiële Bekendmakingen. Gratis te bekijken. | 83 | |
+
+### Link
+
+- Eindpagina: https://wiewoonteropditadres.nl/
+- Weergavepad: `adres` / `opzoeken`
+
+### Meten
+
+- De site geeft de gclid mee aan de offertepagina's (offertes.kvinl.nl, `bron=wiewoonteropditadres`), zodat
+  de leads-app een lead aan de advertentie koppelt.
+- Bezoeken uit de advertentie zijn in Beheer → Statistiek (wiewoonteropditadres.nl) te zien als kanaal
+  "Betaald zoeken".
+- Na 2 weken beoordelen: geen lead of meer dan € 10 per lead → stoppen of de pagina aanpassen.
 
 ## Logboek
 - 23 nov — Ads-sessie: campagne aangemaakt (gepauzeerd); ADS.md opgezet; cookiemelding vastgelegd. De eigenaar noemt de bouwsessie YOOST; de Ads-sessie zet alles voor YOOST in dit bestand.
 - 23 nov — Bouwsessie (commit 01a8c95): AdsBot in robots.txt, gclid/gbraid/wbraid mee naar offertes, vergunningen met tijdslimiet.
 - 23 nov — Ads-sessie: gevraagd om het advertentievoorstel van YOOST hier te zetten.
+- 23 nov — YOOST: voorstel voor de advertentie toegevoegd onder "Voorstel YOOST" (koppen, beschrijvingen, zoekwoorden, uitsluitingen).
