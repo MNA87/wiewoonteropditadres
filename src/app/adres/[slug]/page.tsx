@@ -126,7 +126,7 @@ export default async function AdresPagina({ params }: PageProps<"/adres/[slug]">
           <section className="blok blok-geel" data-blok="woz">
             <h2>WOZ-waarde te hoog?</h2>
             <p>Gemiddeld in deze buurt: <b>€ {nl(b.GemiddeldeWOZWaardeVanWoningen.v * 1000)}</b>. Is jouw aanslag hoger dan je verwacht? Laat gratis bezwaar maken: je betaalt alleen als het lukt.</p>
-            {PARTNERS.woz ? <a className="btn btn-paars" href={PARTNERS.woz} rel="sponsored nofollow noopener" target="_blank">Check of bezwaar loont ›</a> : <span className="btn btn-paars" aria-disabled>Check of bezwaar loont ›</span>}
+            {PARTNERS.woz ? <a className="btn btn-cta" href={PARTNERS.woz} rel="sponsored nofollow noopener" target="_blank">Check of bezwaar loont ›</a> : <span className="btn btn-cta" aria-disabled>Check of bezwaar loont ›</span>}
             <p className="small muted">{PREVIEW && !wozSeizoen ? "Voorbeeld: dit blok staat alleen van februari t/m april in beeld (als de aanslagen binnenkomen)." : "Partnerlink"}{PREVIEW && !PARTNERS.woz ? " Partnerlink volgt." : ""}</p>
           </section>
         ) : null}
