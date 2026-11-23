@@ -17,7 +17,7 @@ const queue: Ev[] = [];
 
 function store(get: () => string | null) { try { return get(); } catch { return null; } }
 // Robots that run a real browser (Puppeteer, Playwright, Selenium) say so in navigator.webdriver.
-const notrack = () => (typeof navigator !== "undefined" && navigator.webdriver) || store(() => localStorage.getItem("ep-notrack")) === "1";
+const notrack = () => (typeof navigator !== "undefined" && navigator.webdriver) || (typeof window !== "undefined" && window.self !== window.top) || store(() => localStorage.getItem("ep-notrack")) === "1";
 
 function session() {
   const now = Date.now();
@@ -211,13 +211,20 @@ export default function Tracker() {
     document.addEventListener("input", onTool, true);
     document.addEventListener("change", onTool, true);
     document.addEventListener("click", onClick, true);
+    // Heatmap (Beheer → Heatmap): where on the page people click, as a position only (x in thousandths
+    // of the window width, y in pixels from the top of the page) and phone/desktop. Never what was clicked or typed.
+    const onHeat = (e: MouseEvent) => {
+      if (notrack() || SKIP.test(location.pathname) || !e.isTrusted) return;
+      send({ t: "hm", p: pad(location.pathname), h: String(Math.round((e.clientX / Math.max(1, innerWidth)) * 1000)), v: Math.round(e.pageY), kd: innerWidth < 768 ? "m" : "d" });
+    };
+    document.addEventListener("click", onHeat, true);
     // Middle click / "open in new tab" with the mouse wheel: also a click on a link.
     const onAux = (e: MouseEvent) => { if (e.button === 1) onClick(e); };
     document.addEventListener("auxclick", onAux, true);
     document.addEventListener("focusin", onFocus);
     document.addEventListener("submit", onSubmit, true);
     addEventListener("pagehide", flush);
-    return () => { document.removeEventListener("input", onTool, true); document.removeEventListener("change", onTool, true); document.removeEventListener("click", onClick, true); document.removeEventListener("auxclick", onAux, true); document.removeEventListener("focusin", onFocus); document.removeEventListener("submit", onSubmit, true); removeEventListener("pagehide", flush); };
+    return () => { document.removeEventListener("input", onTool, true); document.removeEventListener("change", onTool, true); document.removeEventListener("click", onClick, true); document.removeEventListener("click", onHeat, true); document.removeEventListener("auxclick", onAux, true); document.removeEventListener("focusin", onFocus); document.removeEventListener("submit", onSubmit, true); removeEventListener("pagehide", flush); };
   }, []);
 
   return null;
