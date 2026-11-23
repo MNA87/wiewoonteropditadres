@@ -17,3 +17,8 @@
   openzet; `GOOGLE_MAPS_EMBED_KEY` (beperkt tot de eigen domeinen en de Maps Embed API) voor het straatbeeld.
 - **Proefversie** staat ook op enqueteplein.nl/proef/wiewoonteropditadres/ (kopie in de enqueteplein-repo).
 - **Lokaal testen in deze omgeving:** `NODE_USE_ENV_PROXY=1 npx next start -p 3088` (de server moet via de proxy).
+- **Samenwerking met de Ads-sessie (eigenaar 23 nov):** deze sessie heet **YOOST** (bouwt de site); een
+  andere sessie doet Google Ads. **Lees `ADS.md` bij elke taak.** Staan er open punten voor YOOST onder
+  "Te doen": pak ze op en laat de eigenaar zien wat live moet. Schrijf in het logboek van `ADS.md` elke
+  wijziging die Google Ads raakt (URL's, knoppen, links, cookiemelding). De Ads-sessie kan je niet
+  rechtstreeks bereiken en zet niets op de site live.
