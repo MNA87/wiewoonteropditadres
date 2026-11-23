@@ -49,6 +49,8 @@ export default async function AdresPagina({ params }: PageProps<"/adres/[slug]">
   const bespaar = bespaarFor(a.bouwjaar);
   return (
     <div className="wrap adres">
+      {/* Statistics count this page only by municipality, never the address (src/components/Tracker.tsx). */}
+      <span hidden data-ww-pad={`/adres/${a.gemeente.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "onbekend"}/` } />
       <p className="print-only">Adresrapport · wiewoonteropditadres.nl · {new Date().toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" })}</p>
       <div className="adres-top no-print">
         <div><Zoek start={a.naam} /></div>

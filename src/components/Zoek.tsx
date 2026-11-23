@@ -31,7 +31,7 @@ export default function Zoek({ start = "", autoFocus = false }: { start?: string
     try { const l: S[] = await (await fetch(`/api/suggest/?q=${encodeURIComponent(q)}`)).json(); if (l[0]) go(l[0]); } catch {}
   };
   return (
-    <div className="zoek">
+    <div className="zoek" data-notrack="" data-tool="Adres zoeken">
       <form onSubmit={submit} role="search" className="zoek-form">
         <label htmlFor="adres" className="sr">Adres</label>
         <input id="adres" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Bijv. 1336 MK 81 of Dorpsstraat 1, Utrecht" autoComplete="off" autoFocus={autoFocus}

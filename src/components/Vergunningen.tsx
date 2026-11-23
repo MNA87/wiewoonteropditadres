@@ -18,7 +18,7 @@ export default function Vergunningen({ slug }: { slug: string }) {
   const list = (data?.list ?? []).filter((v) => v.m <= r && (!alleenAanvragen || v.status === "aangevraagd"));
   const shown = alles ? list : list.slice(0, 6);
   return (
-    <section className="blok vg" data-blok="vergunningen">
+    <section className="blok vg" data-blok="vergunningen" data-tool="Vergunningen in de buurt">
       <h2>Vergunningen in de buurt</h2>
       <div className="chips">
         <button type="button" className={r === 500 ? "on" : ""} onClick={() => setR(500)}>Binnen 500 m</button>

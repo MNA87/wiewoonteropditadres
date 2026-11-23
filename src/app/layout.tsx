@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
+import Tracker from "@/components/Tracker";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 
 // Fonts self-hosted by next/font (downloaded at build time): visitors send nothing to Google.
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </div>
         </header>
         <main>{children}</main>
+        <Tracker />
         <footer className="foot">
           <div className="wrap">
             <p><strong>Wiewoonteropditadres.nl</strong> toont alleen openbare gegevens over woningen en buurten. · <Link href="/privacy/">Privacy</Link></p>

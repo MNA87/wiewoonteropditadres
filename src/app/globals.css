@@ -140,7 +140,11 @@ button.lucht { border: 0; padding: 0; cursor: zoom-in; width: 100%; }
 .print-only { display: none; }
 /* PDF report: print the page without search, buttons, header and footer */
 @media print {
-  .no-print, .deel, .top, .foot, .zoek, .chips, .lucht span, .bespaar-knoppen, .blok-geel .btn, .site-header, .site-footer, .share-wrap { display: none !important; }
+  .no-print, .deel, .foot, .zoek, .chips, .lucht span, .site-header, .site-footer, .share-wrap { display: none !important; }
+  /* Keep the colours (backgrounds, bars, buttons): browsers drop them when printing by default. */
+  html, body, * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .top { padding: 0; }
+  .bespaar-knop, .btn { break-inside: avoid; }
   .print-only { display: block; font-size: 12px; color: #666; margin: 0 0 8px; }
   body { font-size: 12px; }
   .blok { break-inside: avoid; }

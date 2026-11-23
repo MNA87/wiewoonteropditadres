@@ -25,7 +25,7 @@ export default function Deel({ slug, naam }: { slug: string; naam: string }) {
   };
   const tekst = `Alles over de woning en de buurt van ${naam}: ${url}`;
   return (
-    <div className="deel">
+    <div className="deel" data-notrack="">
       <a className="deel-wa" href={`https://wa.me/?text=${encodeURIComponent(tekst)}`} target="_blank" rel="noopener">Deel via WhatsApp</a>
       <button type="button" onClick={() => { navigator.clipboard?.writeText(url).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2000); }).catch(() => {}); }}>{copied ? "✓ Gekopieerd" : "🔗 Kopieer link"}</button>
       <button type="button" onClick={() => window.print()} title="Opslaan als PDF of afdrukken">⬇ PDF-rapport</button>

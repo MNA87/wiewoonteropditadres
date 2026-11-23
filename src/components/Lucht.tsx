@@ -23,14 +23,14 @@ export default function Lucht({ slug, pts, grootPts, w, h, alt, lat, lon, mapsKe
   const pano = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lon}`;
   return (
     <>
-      <button type="button" className="lucht" onClick={() => setOpen(true)} title="Luchtfoto, kaart en straatbeeld">
+      <button type="button" className="lucht" data-tool="Luchtfoto, kaart en straatbeeld" onClick={() => setOpen(true)} title="Luchtfoto, kaart en straatbeeld">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={img("nu")} width={w} height={h} alt={alt} />
         {pts ? <svg viewBox={`0 0 ${w} ${h}`} aria-hidden><polygon points={pts} /></svg> : null}
         <span>⤢ Groter · kaart · straat</span>
       </button>
       {open ? (
-        <div className="pop" role="dialog" aria-modal="true" aria-label={alt} onClick={() => setOpen(false)}>
+        <div className="pop" data-tool="Luchtfoto, kaart en straatbeeld" role="dialog" aria-modal="true" aria-label={alt} onClick={() => setOpen(false)}>
           <div className="pop-in" onClick={(e) => e.stopPropagation()}>
             <div className="pop-tabs">
               {TABS.map(([k, l]) => <button key={k} type="button" className={tab === k ? "on" : ""} onClick={() => setTab(k)}>{l}</button>)}
