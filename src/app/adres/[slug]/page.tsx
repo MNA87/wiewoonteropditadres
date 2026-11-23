@@ -89,6 +89,11 @@ export default async function AdresPagina({ params }: PageProps<"/adres/[slug]">
           </section>
         ) : null}
 
+      </div>
+
+      <Vergunningen slug={a.slug} />
+
+      <div className="grid grid-2">
         <section className="blok" data-blok="buurt">
           <h2>Wie woont er in deze buurt?</h2>
           <div className="kv">
@@ -142,8 +147,6 @@ export default async function AdresPagina({ params }: PageProps<"/adres/[slug]">
           </div>
         </section>
       </div>
-
-      <Vergunningen slug={a.slug} />
 
       <section className="blok" data-blok="verder">
         <h2>Verder opzoeken voor dít adres</h2>
