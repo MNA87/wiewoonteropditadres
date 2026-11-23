@@ -151,7 +151,7 @@ export default async function AdresPagina({ params }: PageProps<"/adres/[slug]">
       <section className="blok" data-blok="verder">
         <h2>Verder opzoeken voor dít adres</h2>
         <div className="knoppen">
-          <a href="https://www.kadaster.nl/producten/woning/eigendomsinformatie" target="_blank" rel="noopener">Eigenaar opvragen ›<small>Kadaster · betaald uittreksel</small></a>
+          <a href="https://www.kadaster.nl/producten/woning/eigendomsinformatie" target="_blank" rel="noopener">Eigenaar opvragen ›<small>Kadaster · € 3,70 online</small></a>
           <a href={`https://www.kvk.nl/zoeken/?source=all&q=${encodeURIComponent(`${a.postcode} ${a.huisnummer}`)}`} target="_blank" rel="noopener">Bedrijven op dit adres ›<small>KVK · gratis, al ingevuld</small></a>
           <a href="https://www.wozwaardeloket.nl/" target="_blank" rel="noopener">WOZ-waarde van deze woning ›<small>WOZ-waardeloket · gratis</small></a>
           <a href={`https://www.google.com/maps/search/?api=1&query=${q}`} target="_blank" rel="noopener">Op de kaart ›<small>Google Maps</small></a>

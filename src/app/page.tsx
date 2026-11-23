@@ -58,6 +58,11 @@ export default function Home() {
       </section>
 
       <section className="wrap sec">
+        <h2>Bouwen je buren iets?</h2>
+        <p>Op de adrespagina zie je de vergunningen in de buurt en tot wanneer bezwaar mogelijk is. <a href="/bezwaar-vergunning-buren/">Zo maak je bezwaar tegen een vergunning van de buren ›</a></p>
+      </section>
+
+      <section className="wrap sec">
         <h2>Veelgestelde vragen</h2>
         <div className="faq">{FAQ.map(([q, a]) => <details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div>
       </section>

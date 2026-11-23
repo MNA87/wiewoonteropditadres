@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import type { Vergunning } from "@/lib/vergunningen";
-import { lpUrl, soortVan, type Soort } from "@/lib/soorten";
+import { lpUrl, OVERIG, SOORTEN, type Soort } from "@/lib/soorten";
+const soortByKey = (k: string) => SOORTEN.find(([, s]) => s.key === k)?.[1] ?? OVERIG;
 
 const KLEUR: Record<string, string> = { aangevraagd: "vg-geel", verleend: "vg-groen", vergunningsvrij: "vg-groen", "beslistermijn verlengd": "vg-blauw", "buiten behandeling": "vg-grijs", ingetrokken: "vg-grijs", geweigerd: "vg-rood" };
 const datum = (d: string | Date) => new Date(d).toLocaleDateString("nl-NL", { day: "numeric", month: "short" });
@@ -12,7 +13,7 @@ const bezwaarTot = (d: string) => new Date(new Date(d).getTime() + 42 * 86400000
 // a summary, the kind of work (label + filter), the objection period for granted permits,
 // and one "Ook een …?" block to the owner's own lead page for the most common kind nearby.
 export default function Vergunningen({ slug }: { slug: string }) {
-  const [data, setData] = useState<{ gemeente: string; list: Vergunning[] } | null>(null);
+  const [data, setData] = useState<{ gemeente: string; list: Vergunning[]; vanaf?: string } | null>(null);
   const [err, setErr] = useState(false);
   const [r, setR] = useState(500);
   const [soort, setSoort] = useState<string | null>(null);
@@ -20,22 +21,25 @@ export default function Vergunningen({ slug }: { slug: string }) {
   useEffect(() => {
     fetch(`/api/vergunningen/?adres=${slug}`).then((x) => (x.ok ? x.json() : Promise.reject())).then(setData).catch(() => setErr(true));
   }, [slug]);
-  const inR = (data?.list ?? []).filter((v) => v.m <= r).map((v) => ({ ...v, s: soortVan(`${v.wat} ${v.berichten.length ? "" : ""}`) }));
+  const inR = (data?.list ?? []).filter((v) => v.m <= r).map((v) => ({ ...v, s: soortByKey(v.soort) }));
   const tel = new Map<string, { s: Soort; n: number }>();
   for (const v of inR) tel.set(v.s.key, { s: v.s, n: (tel.get(v.s.key)?.n ?? 0) + 1 });
   const soorten = [...tel.values()].sort((a, b) => b.n - a.n);
   const list = inR.filter((v) => !soort || v.s.key === soort);
   const shown = alles ? list : list.slice(0, 6);
   const top = soorten.filter((x) => x.s.key !== "overig");
-  const sum = top.slice(0, 4).map((x, i) => (x.n === 1 ? `1 ${x.s.label.toLowerCase()}` : `${x.n} ${x.s.meervoud}`).replace(/^/, i ? "" : ""));
+  const sum = top.slice(0, 4).map((x) => (x.n === 1 ? `1 ${x.s.label.toLowerCase()}` : `${x.n} ${x.s.meervoud}`));
   const rest = inR.length - top.slice(0, 4).reduce((s, x) => s + x.n, 0);
   const cta = soorten.find((x) => x.s.lp && x.s.kop);
   const now = Date.now();
+  // Large municipalities: we read the newest messages only, so say from which date.
+  const zesMaanden = new Date(now - 6 * 30.5 * 86400000).toISOString().slice(0, 10);
+  const periode = data?.vanaf && data.vanaf > zesMaanden ? `Sinds ${datum(data.vanaf)}` : "Laatste 6 maanden";
   const heeftVerleend = list.some((v) => v.status === "verleend");
   return (
     <section className="blok vg" data-blok="vergunningen" data-tool="Vergunningen in de buurt">
       <h2>Vergunningen in de buurt</h2>
-      {data && inR.length ? <p className="vg-sum">Laatste 6 maanden binnen {r === 500 ? "500 m" : "1 km"}: {sum.map((x, i) => <span key={i}>{i ? (i === sum.length - 1 && rest <= 0 ? " en " : ", ") : ""}<b>{x}</b></span>)}{rest > 0 ? <> en {rest} {rest === 1 ? "andere" : "andere"}</> : null}.</p> : null}
+      {data && inR.length ? <p className="vg-sum">{periode} binnen {r === 500 ? "500 m" : "1 km"}: {sum.length ? <>{sum.map((x, i) => <span key={i}>{i ? (i === sum.length - 1 && rest <= 0 ? " en " : ", ") : ""}<b>{x}</b></span>)}{rest > 0 ? <> en {rest} andere</> : null}</> : <b>{inR.length} {inR.length === 1 ? "bekendmaking" : "bekendmakingen"}</b>}.</p> : null}
       <div className="chips">
         <button type="button" className={r === 500 ? "on" : ""} onClick={() => setR(500)}>Binnen 500 m</button>
         <button type="button" className={r === 1000 ? "on" : ""} onClick={() => setR(1000)}>Binnen 1 km</button>
@@ -47,7 +51,7 @@ export default function Vergunningen({ slug }: { slug: string }) {
       </div>
       {!data && !err ? <p className="muted">Bekendmakingen van de gemeente ophalen…</p> : null}
       {err ? <p className="muted">De bekendmakingen zijn even niet bereikbaar. Probeer het later nog eens.</p> : null}
-      {data && !list.length ? <p className="muted">Geen vergunningen gevonden in de laatste 6 maanden binnen {r === 500 ? "500 meter" : "1 km"}.</p> : null}
+      {data && !list.length ? <p className="muted">Geen vergunningen gevonden ({periode.toLowerCase()}) binnen {r === 500 ? "500 meter" : "1 km"}.</p> : null}
       {shown.length ? (
         <ul className="vg-list">
           {shown.map((v) => {
@@ -67,8 +71,8 @@ export default function Vergunningen({ slug }: { slug: string }) {
           })}
         </ul>
       ) : null}
-      {data ? <p className="small muted">Bekendmakingen van de gemeente {data.gemeente} van de laatste 6 maanden (Officiële Bekendmakingen). Geen namen van aanvragers. {list.length > 6 && !alles ? <button type="button" className="linkbtn" onClick={() => setAlles(true)}>Toon alle {list.length} adressen ›</button> : null}</p> : null}
-      {heeftVerleend ? <p className="vg-uitleg">ⓘ <b>Bezwaar maken?</b> Tegen een verleende vergunning kun je tot 6 weken na de bekendmaking bezwaar maken (bij een uitgebreide procedure: beroep). De precieze termijn staat in de bekendmaking zelf.</p> : null}
+      {data ? <p className="small muted">Bekendmakingen van de gemeente {data.gemeente}, {periode.toLowerCase()} (Officiële Bekendmakingen). Geen namen van aanvragers. {list.length > 6 && !alles ? <button type="button" className="linkbtn" onClick={() => setAlles(true)}>Toon alle {list.length} adressen ›</button> : null}</p> : null}
+      {heeftVerleend ? <p className="vg-uitleg">ⓘ <b>Bezwaar maken?</b> Tegen een verleende vergunning kun je tot 6 weken na de bekendmaking bezwaar maken (bij een uitgebreide procedure: beroep). De precieze termijn staat in de bekendmaking zelf. <a href="/bezwaar-vergunning-buren/">Zo werkt bezwaar maken ›</a></p> : null}
       {cta && cta.s.lp ? (
         <div className="vg-cta">
           <span className="vg-cta-ic" aria-hidden>{cta.s.icon}</span>

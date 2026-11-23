@@ -7,8 +7,8 @@ export async function GET(req: Request) {
   try {
     const a = await adres(slug);
     if (!a) return Response.json({ error: "Adres niet gevonden" }, { status: 404 });
-    const list = await vergunningen(a.gemeente, a.lat, a.lon);
-    return Response.json({ gemeente: a.gemeente, list }, { headers: { "cache-control": "public, max-age=3600" } });
+    const { list, vanaf } = await vergunningen(a.gemeente, a.lat, a.lon);
+    return Response.json({ gemeente: a.gemeente, list, vanaf }, { headers: { "cache-control": "public, max-age=3600" } });
   } catch (e) {
     console.error("vergunningen:", (e as Error).message);
     return Response.json({ error: "De bekendmakingen zijn even niet bereikbaar." }, { status: 502 });
