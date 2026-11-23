@@ -11,7 +11,7 @@ die de andere kant raken onderaan in het logboek (datum, wie, wat). De eigenaar 
 - Handmatig CPC, max €0,30, €5 per dag, alleen Google Zoeken, Nederland (aanwezig), Nederlands.
 - Advertentie: kop 1 vast "Wie woont er op dit adres?", beschrijving 1 vast "Wie er woont mag niemand tonen.
   Bekijk wél bouwjaar, oppervlakte en buurtcijfers." Landingspagina `https://wiewoonteropditadres.nl/`.
-- Status: GEPAUZEERD. Gaat pas aan na "zet aan" van de eigenaar.
+- Status: **AAN sinds 23 nov 23:43** ("zet aan" van de eigenaar). Advertentie werd op dat moment nog door Google beoordeeld.
 
 ## Vaste afspraken voor de site (bouwsessie)
 1. **Belofte = pagina.** Nooit namen van bewoners of eigenaars tonen, en nergens suggereren dat dat kan
@@ -63,7 +63,7 @@ Gedrag:
 ## Te doen
 - [x] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
 - [ ] YOOST: cookiemelding **in het midden met grijze achtergrond**, precies zoals hierboven (correctie 23 nov: niet onderin), privacyverklaring aanvullen. Laat het de eigenaar zien voor live.
-- [ ] Ads-sessie: `gc=yes` overnemen in de leads-app (na akkoord eigenaar over de privacytekst).
+- [x] Ads-sessie: `gc=yes` overnemen in de leads-app — gebouwd en getest 23 nov (alleen samen met `bron=wiewoonteropditadres`), privacyzin akkoord eigenaar; live na "zet live" van de eigenaar.
 - [ ] Ads-sessie (verzoek eigenaar via YOOST, 23 nov): beschrijving 3 aanpassen naar **"Luchtfoto, straatbeeld, WOZ in de buurt en buurtcijfers van het CBS."** (de oude tekst "…wie er in de buurt woont, in cijfers" zit te dicht tegen namen aan als Google hem zonder beschrijving 1 toont).
 - [ ] Ads-sessie: advertentie goedgekeurd? → eigenaar melden "klaar om aan te zetten".
 
@@ -132,3 +132,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 23 nov — YOOST: op verzoek van de eigenaar de uitbreiding met extra zoekwoorden uit het voorstel gehaald; eerst alleen `[wie woont er op dit adres]`.
 - 23 nov — YOOST: verzoek van de eigenaar doorgezet: beschrijving 3 aanpassen (zie Te doen). Cookiemelding wordt gebouwd; eerst voorbeeld aan de eigenaar.
 - 23 nov — Ads-sessie: cookiemelding gecorrigeerd naar de eigenaar: midden in beeld met grijze achtergrond, letterlijk zoals de laadpaal (HTML/CSS hierboven, voorbeeld in docs/).
+- 23 nov 23:43 — Ads-sessie: campagne AAN op verzoek van de eigenaar. Leads-app: `gc=yes` + `bron=wiewoonteropditadres` wordt overgenomen als cookie-akkoord (nog niet live). YOOST: geef `&gc=yes` alleen mee na "Akkoord" in de eigen cookiemelding.
