@@ -1,6 +1,6 @@
 # ADS.md — afspraken tussen de site en Google Ads
 
-Gedeeld logboek tussen de **bouwsessie** (deze repo, de site) en de **Ads-sessie** (repo solvari-leads:
+Gedeeld logboek tussen de **bouwsessie YOOST** (deze repo, de site; naam van de eigenaar, 23 nov) en de **Ads-sessie** (repo solvari-leads:
 Google Ads, campagne, zoektermen, bieden, ochtendanalyse). Lees dit bij elke taak; schrijf wijzigingen
 die de andere kant raken onderaan in het logboek (datum, wie, wat). De eigenaar beslist alleen
 ("zet aan", "stoppen", "budget omhoog").
@@ -52,5 +52,5 @@ Zelfde melding als op de laadpaalpagina's van offertes.kvinl.nl:
 - [ ] Ads-sessie: advertentie goedgekeurd? → eigenaar melden "klaar om aan te zetten".
 
 ## Logboek
-- 23 nov — Ads-sessie: campagne aangemaakt (gepauzeerd); ADS.md opgezet; cookiemelding vastgelegd.
+- 23 nov — Ads-sessie: campagne aangemaakt (gepauzeerd); ADS.md opgezet; cookiemelding vastgelegd. De eigenaar noemt de bouwsessie YOOST; de Ads-sessie zet alles voor YOOST in dit bestand.
 - 23 nov — Bouwsessie (commit 01a8c95): AdsBot in robots.txt, gclid/gbraid/wbraid mee naar offertes, vergunningen met tijdslimiet.
