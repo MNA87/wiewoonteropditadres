@@ -53,6 +53,21 @@ function send(ev: Ev, now = false) {
   if (now || queue.length >= 10) flush();
 }
 
+// Google Ads: the click id (gclid, gbraid, wbraid) from the landing URL is kept for this visit (sessionStorage)
+// and added to links to the own lead pages, so the leads app can tie a lead to the ad.
+const ADS = ["gclid", "gbraid", "wbraid"] as const;
+function keepAdsId() {
+  try { const q = new URLSearchParams(location.search); for (const k of ADS) { const v = q.get(k); if (v) sessionStorage.setItem(`ww-${k}`, v.slice(0, 200)); } } catch {}
+}
+function tagLead(a: HTMLAnchorElement) {
+  try {
+    const u = new URL(a.href, location.href);
+    if (u.hostname !== "offertes.kvinl.nl") return;
+    for (const k of ADS) { const v = sessionStorage.getItem(`ww-${k}`); if (v && !u.searchParams.has(k)) u.searchParams.set(k, v); }
+    a.href = u.href;
+  } catch {}
+}
+
 const text = (el: Element) => (el.getAttribute("aria-label") || el.getAttribute("title") || (el as HTMLElement).innerText || el.getAttribute("alt") || "").replace(/\s+/g, " ").trim().slice(0, 120);
 
 // Name of a tool (calculator, keuzehulp, adres-check…): data-tool, else the heading of its block, else the page title.
@@ -76,6 +91,7 @@ export default function Tracker() {
 
   // One page view per page, plus time and scroll depth when leaving it.
   useEffect(() => {
+    keepAdsId();
     try { if (new URLSearchParams(location.search).get("notrack") === "1") localStorage.setItem("ep-notrack", "1"); } catch {}
     if (SKIP.test(path)) return;
     if (notrack()) return;
@@ -137,9 +153,12 @@ export default function Tracker() {
   // Clicks on links and buttons, and forms (started / sent).
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
+      const lead = (e.target as Element | null)?.closest("a[href]");
+      if (lead) tagLead(lead as HTMLAnchorElement);
       if (notrack() || SKIP.test(location.pathname)) return;
       const el = (e.target as Element | null)?.closest("a[href], button, summary, [data-track]");
       if (!el) return;
+      if (el.tagName === "A") tagLead(el as HTMLAnchorElement);
       // Never store what visitors typed or searched (e.g. addresses in the adres-check).
       const quiet = el.closest("[data-notrack]");
       const a = el.tagName === "A" ? (el as HTMLAnchorElement) : null;
@@ -221,10 +240,12 @@ export default function Tracker() {
     // Middle click / "open in new tab" with the mouse wheel: also a click on a link.
     const onAux = (e: MouseEvent) => { if (e.button === 1) onClick(e); };
     document.addEventListener("auxclick", onAux, true);
+    const onCtx = (e: MouseEvent) => { const a = (e.target as Element | null)?.closest("a[href]"); if (a) tagLead(a as HTMLAnchorElement); };
+    document.addEventListener("contextmenu", onCtx, true);
     document.addEventListener("focusin", onFocus);
     document.addEventListener("submit", onSubmit, true);
     addEventListener("pagehide", flush);
-    return () => { document.removeEventListener("input", onTool, true); document.removeEventListener("change", onTool, true); document.removeEventListener("click", onClick, true); document.removeEventListener("click", onHeat, true); document.removeEventListener("auxclick", onAux, true); document.removeEventListener("focusin", onFocus); document.removeEventListener("submit", onSubmit, true); removeEventListener("pagehide", flush); };
+    return () => { document.removeEventListener("input", onTool, true); document.removeEventListener("change", onTool, true); document.removeEventListener("click", onClick, true); document.removeEventListener("click", onHeat, true); document.removeEventListener("auxclick", onAux, true); document.removeEventListener("contextmenu", onCtx, true); document.removeEventListener("focusin", onFocus); document.removeEventListener("submit", onSubmit, true); removeEventListener("pagehide", flush); };
   }, []);
 
   return null;

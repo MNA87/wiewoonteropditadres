@@ -51,8 +51,8 @@ export async function vergunningen(gemeente: string, lat: number, lon: number, r
   const hits: { m: number; titel: string; datum: string; url: string }[] = [];
   const page = async (start: number) => {
     const r = await fetch(`${SRU}?${new URLSearchParams({ query: q, maximumRecords: "100", startRecord: String(start), recordSchema: "gzd" })}`,
-      { signal: AbortSignal.timeout(20000), next: { revalidate: 6 * 3600 } });
-    return r.ok ? r.text() : "";
+      { signal: AbortSignal.timeout(12000), next: { revalidate: 6 * 3600 } }).catch(() => null);
+    return r?.ok ? r.text() : "";
   };
   const read = (x: string) => {
     for (const rec of x.match(/<sru:record>[\s\S]*?<\/sru:record>/g) ?? []) {
@@ -70,8 +70,11 @@ export async function vergunningen(gemeente: string, lat: number, lon: number, r
   const total = Math.min(3000, Number(first.match(/<sru:numberOfRecords>(\d+)/)?.[1] ?? 0));
   const starts: number[] = [];
   for (let s = 101; s <= total; s += 100) starts.push(s);
-  for (let i = 0; i < starts.length; i += 6) (await Promise.all(starts.slice(i, i + 6).map(page))).forEach(read);
-  const vanaf = total >= 3000 ? oudste : since;
+  // Time budget: stop after 25 s and use what we have (the oldest date read is shown as "sinds").
+  const tot = Date.now() + 25000;
+  let klaar = true;
+  for (let i = 0; i < starts.length; i += 6) { if (Date.now() > tot) { klaar = false; break; } (await Promise.all(starts.slice(i, i + 6).map(page))).forEach(read); }
+  const vanaf = total >= 3000 || !klaar ? oudste : since;
   // One row per address + project: the newest message sets the status.
   const by = new Map<string, Vergunning>();
   for (const h of hits.sort((a, b) => a.datum.localeCompare(b.datum))) {

@@ -19,7 +19,10 @@ export default function Vergunningen({ slug }: { slug: string }) {
   const [soort, setSoort] = useState<string | null>(null);
   const [alles, setAlles] = useState(false);
   useEffect(() => {
-    fetch(`/api/vergunningen/?adres=${slug}`).then((x) => (x.ok ? x.json() : Promise.reject())).then(setData).catch(() => setErr(true));
+    const ctl = new AbortController();
+    const t = setTimeout(() => ctl.abort(), 40000);
+    fetch(`/api/vergunningen/?adres=${slug}`, { signal: ctl.signal }).then((x) => (x.ok ? x.json() : Promise.reject())).then(setData).catch(() => setErr(true)).finally(() => clearTimeout(t));
+    return () => { clearTimeout(t); ctl.abort(); };
   }, [slug]);
   const inR = (data?.list ?? []).filter((v) => v.m <= r).map((v) => ({ ...v, s: soortByKey(v.soort) }));
   const tel = new Map<string, { s: Soort; n: number }>();
