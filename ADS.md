@@ -60,19 +60,9 @@ site: bouwjaar, oppervlakte, WOZ (buurtgemiddelde), buurtcijfers, luchtfoto, str
 
 ### Zoekwoorden
 
-Alleen exact, zoals de eigenaar wil:
+Alleen exact, en voorlopig alleen dit ene zoekwoord (eigenaar, 23 nov):
 
 - `[wie woont er op dit adres]` (staat al in de campagne)
-
-Mogelijke uitbreiding later, ook exact en alleen na een goede eerste meting (eigen advertentiegroep per
-onderwerp, met de bijbehorende gids als landingspagina):
-
-| Zoekwoord | Landingspagina |
-|---|---|
-| `[wie woont op dit adres]` | https://wiewoonteropditadres.nl/ |
-| `[bouwjaar huis opzoeken]` | https://wiewoonteropditadres.nl/bouwjaar-huis-opzoeken/ |
-| `[eigenaar huis opzoeken]` | https://wiewoonteropditadres.nl/eigenaar-huis-opzoeken/ |
-| `[bezwaar vergunning buren]` | https://wiewoonteropditadres.nl/bezwaar-vergunning-buren/ |
 
 ### Uitsluitingen (zinsdeel)
 
@@ -123,3 +113,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 23 nov — Bouwsessie (commit 01a8c95): AdsBot in robots.txt, gclid/gbraid/wbraid mee naar offertes, vergunningen met tijdslimiet.
 - 23 nov — Ads-sessie: gevraagd om het advertentievoorstel van YOOST hier te zetten.
 - 23 nov — YOOST: voorstel voor de advertentie toegevoegd onder "Voorstel YOOST" (koppen, beschrijvingen, zoekwoorden, uitsluitingen).
+- 23 nov — YOOST: op verzoek van de eigenaar de uitbreiding met extra zoekwoorden uit het voorstel gehaald; eerst alleen `[wie woont er op dit adres]`.
