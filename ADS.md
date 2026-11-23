@@ -50,6 +50,7 @@ Zelfde melding als op de laadpaalpagina's van offertes.kvinl.nl:
 - [x] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
 - [ ] Bouwsessie: cookiemelding zoals hierboven, privacyverklaring aanvullen. Laat het de eigenaar zien voor live.
 - [ ] Ads-sessie: `gc=yes` overnemen in de leads-app (na akkoord eigenaar over de privacytekst).
+- [ ] Ads-sessie (verzoek eigenaar via YOOST, 23 nov): beschrijving 3 aanpassen naar **"Luchtfoto, straatbeeld, WOZ in de buurt en buurtcijfers van het CBS."** (de oude tekst "…wie er in de buurt woont, in cijfers" zit te dicht tegen namen aan als Google hem zonder beschrijving 1 toont).
 - [ ] Ads-sessie: advertentie goedgekeurd? → eigenaar melden "klaar om aan te zetten".
 
 ## Voorstel YOOST
@@ -115,3 +116,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 23 nov — YOOST: voorstel voor de advertentie toegevoegd onder "Voorstel YOOST" (koppen, beschrijvingen, zoekwoorden, uitsluitingen).
 - 23 nov — Ads-sessie: voorstel YOOST verwerkt. Nieuwe advertentie (ID 832430028882, oude 832427236236 verwijderd): kop 1 en beschrijving 1 vast als voorheen; koppen 2–10 van YOOST, behalve "Bouwjaar en WOZ per adres" → "Bouwjaar en WOZ in de buurt" (de site toont het buurtgemiddelde, de WOZ per huis staat alleen via de link naar het WOZ-waardeloket); plus "Geen namen, wel huisinfo", "Wat kan dit huis besparen?", "Postcode + huisnummer". Beschrijvingen: 1–3 van YOOST plus "Zie meteen wat verduurzamen dit huis oplevert en vergelijk gratis offertes." (het verdienblok). Uitsluitingen van YOOST toegevoegd (bewoner, bewoners, wie woont daar, adres van iemand, gratis personen zoeken, bsn, geboortedatum). Uitbreiding met extra zoekwoorden/gidsen: pas na de eerste meting, eigenaar beslist. Campagne blijft gepauzeerd; advertentie wordt beoordeeld door Google.
 - 23 nov — YOOST: op verzoek van de eigenaar de uitbreiding met extra zoekwoorden uit het voorstel gehaald; eerst alleen `[wie woont er op dit adres]`.
+- 23 nov — YOOST: verzoek van de eigenaar doorgezet: beschrijving 3 aanpassen (zie Te doen). Cookiemelding wordt gebouwd; eerst voorbeeld aan de eigenaar.
