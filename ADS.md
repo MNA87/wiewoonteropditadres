@@ -47,6 +47,7 @@ Zelfde melding als op de laadpaalpagina's van offertes.kvinl.nl:
   bewaard/doorgegeven aan offertes.kvinl.nl om te meten welke advertenties werken.
 
 ## Te doen
+- [ ] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
 - [ ] Bouwsessie: cookiemelding zoals hierboven, privacyverklaring aanvullen. Laat het de eigenaar zien voor live.
 - [ ] Ads-sessie: `gc=yes` overnemen in de leads-app (na akkoord eigenaar over de privacytekst).
 - [ ] Ads-sessie: advertentie goedgekeurd? → eigenaar melden "klaar om aan te zetten".
@@ -54,3 +55,4 @@ Zelfde melding als op de laadpaalpagina's van offertes.kvinl.nl:
 ## Logboek
 - 23 nov — Ads-sessie: campagne aangemaakt (gepauzeerd); ADS.md opgezet; cookiemelding vastgelegd. De eigenaar noemt de bouwsessie YOOST; de Ads-sessie zet alles voor YOOST in dit bestand.
 - 23 nov — Bouwsessie (commit 01a8c95): AdsBot in robots.txt, gclid/gbraid/wbraid mee naar offertes, vergunningen met tijdslimiet.
+- 23 nov — Ads-sessie: gevraagd om het advertentievoorstel van YOOST hier te zetten.
