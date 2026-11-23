@@ -2,6 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
+  // One address: www and the Railway address go to wiewoonteropditadres.nl (same path).
+  async redirects() {
+    return [
+      { source: "/:path*", has: [{ type: "host", value: "www.wiewoonteropditadres.nl" }], destination: "https://wiewoonteropditadres.nl/:path*", permanent: true },
+      { source: "/:path*", has: [{ type: "host", value: "(?<host>.*)\\.up\\.railway\\.app" }], destination: "https://wiewoonteropditadres.nl/:path*", permanent: true },
+    ];
+  },
   async headers() {
     return [{
       source: "/:path*",
