@@ -27,28 +27,42 @@ die de andere kant raken onderaan in het logboek (datum, wie, wat). De eigenaar 
    gclid wordt na goedkeuring door Solvari als conversie "KVINL – aangenomen leads" naar Google gestuurd
    (alleen met cookie-akkoord op offertes.kvinl.nl). De site hoeft daarvoor geen Google-tag te hebben.
 
-## Cookiemelding (eigenaar 23 nov: "zoals we al hebben voor laadpalen")
-Zelfde melding als op de laadpaalpagina's van offertes.kvinl.nl:
-- **Tekst**: "Wij gebruiken cookies" — "We gebruiken cookies om te meten welke advertenties werken, zodat we
-  ze kunnen verbeteren. Meer info" (link naar /privacy).
-- **Knoppen**: "Akkoord" en "Alleen noodzakelijk" (of "Weigeren"), **even groot en even makkelijk**, geen
-  vooraf aangevinkte keuze.
-- **Plek**: als balk **onderin beeld**, zodat de zoekbalk en de eerste antwoorden zichtbaar blijven (op de
-  laadpaal bleek een melding midden over de vraag bezoekers te kosten). Alleen tonen aan bezoekers die via een
-  advertentie komen (gclid/gbraid/wbraid in de URL); anderen zien hem niet zolang de site geen
-  advertentiecookies zet.
-- **Onthouden**: keuze 180 dagen, cookie `ww_gc=yes|no` (SameSite=Lax). Bij "Alleen noodzakelijk" niets van
-  Google laden en de gclid niet meegeven.
-- **Doorgeven aan de offertepagina** (zodat de bezoeker niet twee keer gevraagd wordt): bij "Akkoord" in de
-  link naar offertes.kvinl.nl ook `&gc=yes` meegeven. ⚠️ De leads-app moet `gc=yes` nog overnemen als
-  toestemming — dat bouwt de Ads-sessie in solvari-leads, en de privacytekst van offertes.kvinl.nl moet dat
-  noemen (eigenaar beslist over die tekst). Tot dat klaar is: `&gc=yes` mag al mee, het wordt genegeerd.
-- **Privacyverklaring** van wiewoonteropditadres.nl: noemen dat er bij akkoord een advertentie-klik-ID wordt
-  bewaard/doorgegeven aan offertes.kvinl.nl om te meten welke advertenties werken.
+## Cookiemelding (eigenaar 23 nov: "zelfde als bij de laadpaal: in het midden, grijze achtergrond")
+⚠️ Correctie: eerder stond hier "balk onderin" — dat was fout. De eigenaar wil **precies de melding van de
+laadpaalpagina (offertes.kvinl.nl/aanvraag?v=34b)**: een venster **midden in beeld** met een **grijze,
+halfdoorzichtige achtergrond** over de hele pagina. Voorbeeld: `docs/cookiemelding-voorbeeld-laadpaal.png`
+(live te zien op https://offertes.kvinl.nl/aanvraag?v=34b&proef=ja&voorbeeld=midden).
+
+HTML (zoals in solvari-leads, lib/funnel.js `googleConsent`, variant "midden"):
+```html
+<div class="gc gc-mid" id="gc" hidden role="dialog" aria-modal="true" aria-labelledby="gc-h"><div class="gc-card">
+  <p class="gc-h" id="gc-h">Wij gebruiken cookies</p>
+  <p>We gebruiken cookies om te meten welke advertenties werken, zodat we ze kunnen verbeteren. <a href="/privacy/" target="_blank" rel="noopener">Meer info</a></p>
+  <div><button type="button" data-gc="yes">Akkoord</button><button type="button" data-gc="no" class="gc-no">Alleen noodzakelijk</button></div>
+</div></div>
+```
+CSS (letterlijk overgenomen; kleur van de knoppen mag de huiskleur van de site zijn, beide knoppen dezelfde kleur zoals bij de laadpaal):
+```css
+.gc{position:fixed;z-index:50;color:#1c1f24}
+.gc[hidden]{display:none}.gc a{color:#1f2937}.gc p{margin:0}
+.gc.gc-mid{inset:0;padding:16px;background:rgba(17,24,39,.5);display:flex;align-items:center;justify-content:center;font-size:.95rem;line-height:1.4}
+.gc.gc-mid .gc-card{background:#fff;width:min(440px,100%);border-radius:16px;padding:24px 22px 20px;box-shadow:0 20px 50px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:12px}
+.gc.gc-mid .gc-h{margin:0;font-weight:800;font-size:1.25rem}
+.gc.gc-mid .gc-card div{display:flex;flex-direction:column;gap:10px;width:100%}
+.gc.gc-mid button{width:100%;padding:13px 14px;font:inherit;font-size:1rem;font-weight:700;border-radius:8px;border:1.5px solid #c9571a;background:#c9571a;color:#fff;cursor:pointer}
+@media (min-width:700px){.gc.gc-mid .gc-card{width:min(560px,100%)}.gc.gc-mid .gc-card div{flex-direction:row}.gc.gc-mid button{flex:1;width:auto}}
+```
+Gedrag:
+- Tonen bij elk bezoek zonder eerdere keuze (zelfde als laadpaal; als de eigenaar het alleen voor advertentiebezoekers wil, staat dat hier later).
+- Klik op een knop: venster dicht, keuze 180 dagen onthouden in cookie `ww_gc=yes|no` (Path=/, SameSite=Lax).
+- "Alleen noodzakelijk": niets van Google laden en de gclid/gbraid/wbraid **niet** meegeven aan offertes.kvinl.nl.
+- "Akkoord": gclid e.d. wel meegeven, plus `&gc=yes` in de links naar offertes.kvinl.nl (de leads-app neemt dat later over; tot dan wordt het genegeerd).
+- In de footer een link "Cookie-instellingen" die het venster opnieuw opent (keuze wijzigen even makkelijk als kiezen).
+- Privacyverklaring aanvullen: cookie `ww_gc`, en dat bij akkoord de advertentie-klik-ID aan offertes.kvinl.nl wordt doorgegeven om te meten welke advertenties werken.
 
 ## Te doen
 - [x] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
-- [ ] Bouwsessie: cookiemelding zoals hierboven, privacyverklaring aanvullen. Laat het de eigenaar zien voor live.
+- [ ] YOOST: cookiemelding **in het midden met grijze achtergrond**, precies zoals hierboven (correctie 23 nov: niet onderin), privacyverklaring aanvullen. Laat het de eigenaar zien voor live.
 - [ ] Ads-sessie: `gc=yes` overnemen in de leads-app (na akkoord eigenaar over de privacytekst).
 - [ ] Ads-sessie (verzoek eigenaar via YOOST, 23 nov): beschrijving 3 aanpassen naar **"Luchtfoto, straatbeeld, WOZ in de buurt en buurtcijfers van het CBS."** (de oude tekst "…wie er in de buurt woont, in cijfers" zit te dicht tegen namen aan als Google hem zonder beschrijving 1 toont).
 - [ ] Ads-sessie: advertentie goedgekeurd? → eigenaar melden "klaar om aan te zetten".
@@ -117,3 +131,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 23 nov — Ads-sessie: voorstel YOOST verwerkt. Nieuwe advertentie (ID 832430028882, oude 832427236236 verwijderd): kop 1 en beschrijving 1 vast als voorheen; koppen 2–10 van YOOST, behalve "Bouwjaar en WOZ per adres" → "Bouwjaar en WOZ in de buurt" (de site toont het buurtgemiddelde, de WOZ per huis staat alleen via de link naar het WOZ-waardeloket); plus "Geen namen, wel huisinfo", "Wat kan dit huis besparen?", "Postcode + huisnummer". Beschrijvingen: 1–3 van YOOST plus "Zie meteen wat verduurzamen dit huis oplevert en vergelijk gratis offertes." (het verdienblok). Uitsluitingen van YOOST toegevoegd (bewoner, bewoners, wie woont daar, adres van iemand, gratis personen zoeken, bsn, geboortedatum). Uitbreiding met extra zoekwoorden/gidsen: pas na de eerste meting, eigenaar beslist. Campagne blijft gepauzeerd; advertentie wordt beoordeeld door Google.
 - 23 nov — YOOST: op verzoek van de eigenaar de uitbreiding met extra zoekwoorden uit het voorstel gehaald; eerst alleen `[wie woont er op dit adres]`.
 - 23 nov — YOOST: verzoek van de eigenaar doorgezet: beschrijving 3 aanpassen (zie Te doen). Cookiemelding wordt gebouwd; eerst voorbeeld aan de eigenaar.
+- 23 nov — Ads-sessie: cookiemelding gecorrigeerd naar de eigenaar: midden in beeld met grijze achtergrond, letterlijk zoals de laadpaal (HTML/CSS hierboven, voorbeeld in docs/).
