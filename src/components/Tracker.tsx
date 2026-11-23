@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { ADS, adsId, captureAds, consent } from "@/lib/consent";
 
 // Visitor statistics, sent to the owner's dashboard on enqueteplein.nl (Beheer → Statistiek →
 // wiewoonteropditadres.nl): page views, where visitors come from, clicks, tools, scroll depth and
@@ -53,17 +54,14 @@ function send(ev: Ev, now = false) {
   if (now || queue.length >= 10) flush();
 }
 
-// Google Ads: the click id (gclid, gbraid, wbraid) from the landing URL is kept for this visit (sessionStorage)
-// and added to links to the own lead pages, so the leads app can tie a lead to the ad.
-const ADS = ["gclid", "gbraid", "wbraid"] as const;
-function keepAdsId() {
-  try { const q = new URLSearchParams(location.search); for (const k of ADS) { const v = q.get(k); if (v) sessionStorage.setItem(`ww-${k}`, v.slice(0, 200)); } } catch {}
-}
+// Google Ads: the ad click id goes along to the own lead pages, only with consent (cookie notice,
+// src/lib/consent.ts), together with gc=yes so the visitor is not asked twice.
 function tagLead(a: HTMLAnchorElement) {
   try {
     const u = new URL(a.href, location.href);
-    if (u.hostname !== "offertes.kvinl.nl") return;
-    for (const k of ADS) { const v = sessionStorage.getItem(`ww-${k}`); if (v && !u.searchParams.has(k)) u.searchParams.set(k, v); }
+    if (u.hostname !== "offertes.kvinl.nl" || consent() !== "yes") return;
+    for (const k of ADS) { const v = adsId(k); if (v && !u.searchParams.has(k)) u.searchParams.set(k, v); }
+    u.searchParams.set("gc", "yes");
     a.href = u.href;
   } catch {}
 }
@@ -91,7 +89,7 @@ export default function Tracker() {
 
   // One page view per page, plus time and scroll depth when leaving it.
   useEffect(() => {
-    keepAdsId();
+    captureAds();
     try { if (new URLSearchParams(location.search).get("notrack") === "1") localStorage.setItem("ep-notrack", "1"); } catch {}
     if (SKIP.test(path)) return;
     if (notrack()) return;

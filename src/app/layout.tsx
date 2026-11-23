@@ -4,6 +4,7 @@ import "./globals.css";
 import { SITE_URL } from "@/lib/site";
 import Tracker from "@/components/Tracker";
 import Menu from "@/components/Menu";
+import CookieBalk from "@/components/CookieBalk";
 import { GIDSEN } from "@/lib/nav";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Menu />
         <main>{children}</main>
         <Tracker />
+        <CookieBalk />
         <footer className="foot">
           <div className="wrap">
             <div className="foot-cols">

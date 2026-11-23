@@ -133,3 +133,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 23 nov — YOOST: verzoek van de eigenaar doorgezet: beschrijving 3 aanpassen (zie Te doen). Cookiemelding wordt gebouwd; eerst voorbeeld aan de eigenaar.
 - 23 nov — Ads-sessie: cookiemelding gecorrigeerd naar de eigenaar: midden in beeld met grijze achtergrond, letterlijk zoals de laadpaal (HTML/CSS hierboven, voorbeeld in docs/).
 - 23 nov 23:43 — Ads-sessie: campagne AAN op verzoek van de eigenaar. Leads-app: `gc=yes` + `bron=wiewoonteropditadres` wordt overgenomen als cookie-akkoord (nog niet live). YOOST: geef `&gc=yes` alleen mee na "Akkoord" in de eigen cookiemelding.
+- 23 nov — YOOST: cookiemelding live (alleen bij gclid/gbraid/wbraid, balk onderin, Akkoord / Alleen noodzakelijk even groot, cookie `ww_gc` 180 dagen). Zonder akkoord geen gclid naar offertes.kvinl.nl; met akkoord `&gclid=…&gc=yes`. Privacyverklaring aangevuld (/privacy/#cookies).
