@@ -86,6 +86,24 @@ Nodig: Mijn Kadaster + Kadata Internet, €40,20/jaar (met incasso), API-key per
 Ter vergelijking concurrenten: koopsom €3,75, eigendom €9,95.
 **Kansen:** (1) gratis: energielabel + gemeentelijke lasten op elke adrespagina (geen RVO-sleutel nodig). (2) woningtype voor €0,05 → beter passend offerteblok. (3) koopsom (€0,45) als betaald product of als beloning na een offerte-aanvraag. **Voorwaarden (kadaster.nl/algemene-leveringsvoorwaarden):** gebruik alleen voor het doel in de overeenkomst; doorverkopen aan derden alleen als dat **in de overeenkomst is afgesproken** (met eigen voorwaarden); persoonsgegevens niet in commerciële producten; mogelijk bronvermelding verplicht; niet doen alsof je namens het Kadaster handelt. → Eerst bij Kadaster vragen naar een overeenkomst voor doorlevering (zoals kadastercheck die heeft). Niets bouwen voor dat er is.
 
+## Idee: betaald woningrapport uit open overheidsdata (Ads-sessie, 24 nov)
+Open data (CC0 / CC BY) mag je commercieel hergebruiken, ook verkopen, zonder overeenkomst (bij CC BY met bronvermelding). Het product is dan niet de losse data, maar **ons rapport** dat het samenvoegt (zoals woningcheck.nl €6,95–29,95). Inkoop €0.
+Bronnen (licentie per bron vóór gebruik nog bevestigen):
+- BAG (CC0): bouwjaar, m², gebruik, aantal woningen in pand
+- 3D BAG (CC BY 4.0): dakvorm, dak-m², hoogte, gevel-m² → zonnepotentieel, isolatie-m²
+- AHN hoogtekaart (CC0): ligging, hoogte t.o.v. omgeving
+- Kadastrale kaart via PDOK (open): perceel, perceelgrootte
+- CBS wijken/buurten (CC BY 4.0): gem. WOZ buurt, energieverbruik, inkomen, nabijheid voorzieningen
+- RCE (open): rijksmonument, beschermd stads-/dorpsgezicht
+- Klimaateffectatlas / PDOK RWS: overstroming, hittestress, droogte, funderingsrisico (licentie per kaartlaag checken)
+- RIVM Atlas Leefomgeving: geluid, luchtkwaliteit
+- Bodemloket: bekende bodemverontreiniging
+- Omgevingsloket/DSO (gratis API-sleutel): regels uit het omgevingsplan op de locatie
+- Officiële Bekendmakingen (open): vergunningen in de straat (hebben we al)
+- EP-online (gratis sleutel RVO): energielabel
+Niet zonder afspraak: Kadaster-API's (koopsom, WOZ-object, eigendom) en het WOZ-waardeloket (voorwaarden nog niet gelezen).
+**Producten:** (a) gratis basis op de adrespagina + offerteblok; (b) betaald "Kopersrapport" (risico's: fundering, overstroming, bodem, geluid, monument, omgevingsplan, vergunningen) €4,95–9,95; (c) gratis "Verduurzamingsrapport" (dak, zonnepanelen, isolatie-m², label) in ruil voor een offerte-aanvraag → leads. Geen namen. Eigenaar beslist.
+
 ## Te doen
 - [x] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
 - [ ] YOOST: cookiemelding **in het midden met grijze achtergrond**, precies zoals hierboven (correctie 23 nov: niet onderin), privacyverklaring aanvullen. Laat het de eigenaar zien voor live.
@@ -166,3 +184,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 24 nov — Ads-sessie: eigen databronnen per adres getest (WOZ, 3D BAG-dak, perceel, monumenten, energielabel).
 - 24 nov — Ads-sessie: Kadaster maatwerk-API's en prijzen toegevoegd.
 - 24 nov — Ads-sessie: Kadaster-voorwaarden doorverkoop toegevoegd (overeenkomst nodig).
+- 24 nov — Ads-sessie: idee betaald woningrapport uit open data toegevoegd.
