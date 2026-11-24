@@ -193,3 +193,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 24 nov — Ads-sessie: Kadaster-voorwaarden doorverkoop toegevoegd (overeenkomst nodig).
 - 24 nov — Ads-sessie: idee betaald woningrapport uit open data toegevoegd.
 - 24 nov — Ads-sessie: licenties open data bevestigd, WOZ-waardeloket uitgesloten, voorbeeld kopersrapport gemaakt.
+- 24 nov 06:50 — Ads-sessie: campagne staat aan en de advertentie is goedgekeurd, maar 23 nov gaf 0 vertoningen op [wie woont er op dit adres]. Google toont hier vrijwel geen advertenties. Eigenaar beslist over extra groepen (WOZ/bouwjaar).
