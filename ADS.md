@@ -67,6 +67,16 @@ Gedrag:
 - **WOZ-bezwaar**: sinds 2024 gaat de kostenvergoeding naar de inwoner; no-cure-no-pay-bureaus verdienen minder → als partner minder interessant (staat al als optie via `PARTNER_WOZ_URL`).
 - **Google Ads**: op `[wie woont er op dit adres]` heeft Google geen biedgegevens → waarschijnlijk (bijna) geen advertenties. Voorstel aan de eigenaar: extra exacte groepen `[woz waarde opzoeken]` (±6.600/mnd, €0,14–0,31) en `[bouwjaar huis opzoeken]` (±140/mnd, €0,07–0,19) naar de bestaande gidspagina's. Eigenaar beslist.
 
+## Eigen data per adres (Ads-sessie, 24 nov, getest)
+Nu gebruikt: BAG (bouwjaar, m², gebruik), CBS-buurt, luchtfoto/kaart, vergunningen. Extra, zelf op te halen en getest op Visschersplein 1 Utrecht:
+- **WOZ-waarde per adres, meerdere jaren** — `api.kadaster.nl/lvwoz/wozwaardeloket-api/v1/wozwaarde/nummeraanduiding/<id>` (GET) gaf 2025 €494.000, 2024 €451.000 … WOZ is wettelijk openbaar, maar **eerst de gebruiksvoorwaarden van het WOZ-waardeloket checken** (geautomatiseerd opvragen). Grootste trekker van woninginformatie.nl, bij ons dan gratis.
+- **Dak uit 3D BAG** — `api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.<pandid>`: daktype (plat/schuin), m² plat en schuin dak, hoogte, bouwlagen, m² gevel. → zonnepanelen-schatting, dakisolatie, gevelisolatie: precies de offertes die wij verkopen.
+- **Perceel** — PDOK kadastrale kaart WFS (sectie, perceelnummer, grootte) → tuin, schutting, bestrating.
+- **Monumenten / beschermd gezicht** — PDOK RCE-diensten (bereikbaar).
+- **Energielabel** — EP-online (RVO): gratis API-sleutel nodig (eigenaar vraagt aan bij RVO).
+- Ook open: overstroming/klimaat (PDOK RWS, Klimaateffectatlas), geluid/lucht (RIVM Atlas Leefomgeving), CBS buurtcijfers (gem. WOZ, % koop, energieverbruik).
+**Verdienen:** gebruik deze data om per huis het passende offerteblok te tonen (schuin dak zuid → zonnepanelen; label D of slechter → isolatie/warmtepomp; vóór 1994 → asbest; groot perceel → tuin/bestrating). Nooit namen of eigenaren tonen.
+
 ## Te doen
 - [x] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
 - [ ] YOOST: cookiemelding **in het midden met grijze achtergrond**, precies zoals hierboven (correctie 23 nov: niet onderin), privacyverklaring aanvullen. Laat het de eigenaar zien voor live.
@@ -144,3 +154,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 23 nov — YOOST: cookiemelding op verzoek van de eigenaar in het midden (als kaart, zoals de laadpaalpagina's, met twee gevulde knoppen), maar direct onder de zoekbalk zodat zoekbalk en knop zichtbaar blijven. Grijze laag over de pagina vanaf net onder de zoekbalk (zoekbalk en knop blijven licht en bruikbaar). Op kleine schermen compact met "Weigeren". Wijkt af van "balk onderin" hierboven: eigenaar besliste.
 - 24 nov — YOOST: testlink `?cookietest=1` toont de cookiemelding altijd (Safari privé haalt gclid weg); de keuze wordt dan niet bewaard. Geen effect op echte bezoekers.
 - 24 nov — Ads-sessie: concurrentie (woninginformatie.nl e.a.) en verdienkansen toegevoegd.
+- 24 nov — Ads-sessie: eigen databronnen per adres getest (WOZ, 3D BAG-dak, perceel, monumenten, energielabel).
