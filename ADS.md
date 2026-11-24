@@ -77,6 +77,15 @@ Nu gebruikt: BAG (bouwjaar, m², gebruik), CBS-buurt, luchtfoto/kaart, vergunnin
 - Ook open: overstroming/klimaat (PDOK RWS, Klimaateffectatlas), geluid/lucht (RIVM Atlas Leefomgeving), CBS buurtcijfers (gem. WOZ, % koop, energieverbruik).
 **Verdienen:** gebruik deze data om per huis het passende offerteblok te tonen (schuin dak zuid → zonnepanelen; label D of slechter → isolatie/warmtepomp; vóór 1994 → asbest; groot perceel → tuin/bestrating). Nooit namen of eigenaren tonen.
 
+## Kadaster maatwerk-API's (bron: kadaster.nl/zakelijk/datasets/maatwerk-api-s-kadaster, 24 nov)
+Nodig: Mijn Kadaster + Kadata Internet, €40,20/jaar (met incasso), API-key per product. Prijzen per adres (excl. btw, WOZ incl.):
+- **Objectinformatie API**: algemeen (adres, kadastrale kaart/aanduiding, oppervlakte, gebruik, **energielabel**) **gratis**; gemeentelijke lasten (OZB, afval, riool) **gratis**; buurtstatistieken **gratis**; koopsom €0,45; WOZ-object €1,92; rechten/eigendom €2,96; publiekrechtelijke beperkingen €0,37.
+- **Koopsom API**: laatste koopsom + datum, €0,45.
+- **KadasterCheck API**: bouwjaar €0,01, woningtype (vrijstaand/2-onder-1-kap/hoek/tussen/appartement) €0,05, monument €0,05, oppervlakte €0,01, pandhoogte/inhoud/vloerhoogte NAP €0,05.
+- Inzicht via de kaart / Contractloos: **namen van eigenaren → niet gebruiken** (regel: nooit namen).
+Ter vergelijking concurrenten: koopsom €3,75, eigendom €9,95.
+**Kansen:** (1) gratis: energielabel + gemeentelijke lasten op elke adrespagina (geen RVO-sleutel nodig). (2) woningtype voor €0,05 → beter passend offerteblok. (3) koopsom (€0,45) als betaald product of als beloning na een offerte-aanvraag. **Eerst checken:** Kadaster-voorwaarden voor doorleveren/tonen aan derden; eigenaar beslist over abonnement.
+
 ## Te doen
 - [x] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
 - [ ] YOOST: cookiemelding **in het midden met grijze achtergrond**, precies zoals hierboven (correctie 23 nov: niet onderin), privacyverklaring aanvullen. Laat het de eigenaar zien voor live.
@@ -155,3 +164,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 24 nov — YOOST: testlink `?cookietest=1` toont de cookiemelding altijd (Safari privé haalt gclid weg); de keuze wordt dan niet bewaard. Geen effect op echte bezoekers.
 - 24 nov — Ads-sessie: concurrentie (woninginformatie.nl e.a.) en verdienkansen toegevoegd.
 - 24 nov — Ads-sessie: eigen databronnen per adres getest (WOZ, 3D BAG-dak, perceel, monumenten, energielabel).
+- 24 nov — Ads-sessie: Kadaster maatwerk-API's en prijzen toegevoegd.
