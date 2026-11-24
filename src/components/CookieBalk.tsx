@@ -11,7 +11,14 @@ export default function CookieBalk() {
   const [klein, setKlein] = useState(false);
   const [grijs, setGrijs] = useState(0);
   const card = useRef<HTMLDivElement>(null);
-  useEffect(() => { captureAds(); setShow(fromAd() && consent() === null); }, []);
+  // ?cookietest=1: always show the notice (for the owner, e.g. Safari strips gclid); the choice is not saved.
+  const [test, setTest] = useState(false);
+  useEffect(() => {
+    captureAds();
+    const t = new URLSearchParams(location.search).has("cookietest");
+    setTest(t);
+    setShow(t || (fromAd() && consent() === null));
+  }, []);
   useEffect(() => {
     if (!show) return;
     const place = () => {
@@ -33,7 +40,7 @@ export default function CookieBalk() {
     return () => { cancelAnimationFrame(raf); removeEventListener("resize", place); };
   }, [show, klein]);
   if (!show) return null;
-  const kies = (v: "yes" | "no") => { setConsent(v); setShow(false); };
+  const kies = (v: "yes" | "no") => { if (!test) setConsent(v); setShow(false); };
   return (
     <>
     <div className="cookiegrijs" style={{ top: grijs }} aria-hidden />
