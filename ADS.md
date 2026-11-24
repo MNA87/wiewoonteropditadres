@@ -69,7 +69,7 @@ Gedrag:
 
 ## Eigen data per adres (Ads-sessie, 24 nov, getest)
 Nu gebruikt: BAG (bouwjaar, m², gebruik), CBS-buurt, luchtfoto/kaart, vergunningen. Extra, zelf op te halen en getest op Visschersplein 1 Utrecht:
-- **WOZ-waarde per adres, meerdere jaren** — `api.kadaster.nl/lvwoz/wozwaardeloket-api/v1/wozwaarde/nummeraanduiding/<id>` (GET) gaf 2025 €494.000, 2024 €451.000 … WOZ is wettelijk openbaar, maar **eerst de gebruiksvoorwaarden van het WOZ-waardeloket checken** (geautomatiseerd opvragen). Grootste trekker van woninginformatie.nl, bij ons dan gratis.
+- ~~WOZ-waarde per adres~~ (NIET: voorwaarden WOZ-waardeloket verbieden dit) — `api.kadaster.nl/lvwoz/wozwaardeloket-api/v1/wozwaarde/nummeraanduiding/<id>` (GET) gaf 2025 €494.000, 2024 €451.000 … WOZ is wettelijk openbaar, maar **eerst de gebruiksvoorwaarden van het WOZ-waardeloket checken** (geautomatiseerd opvragen). Grootste trekker van woninginformatie.nl, bij ons dan gratis.
 - **Dak uit 3D BAG** — `api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.<pandid>`: daktype (plat/schuin), m² plat en schuin dak, hoogte, bouwlagen, m² gevel. → zonnepanelen-schatting, dakisolatie, gevelisolatie: precies de offertes die wij verkopen.
 - **Perceel** — PDOK kadastrale kaart WFS (sectie, perceelnummer, grootte) → tuin, schutting, bestrating.
 - **Monumenten / beschermd gezicht** — PDOK RCE-diensten (bereikbaar).
@@ -88,7 +88,14 @@ Ter vergelijking concurrenten: koopsom €3,75, eigendom €9,95.
 
 ## Idee: betaald woningrapport uit open overheidsdata (Ads-sessie, 24 nov)
 Open data (CC0 / CC BY) mag je commercieel hergebruiken, ook verkopen, zonder overeenkomst (bij CC BY met bronvermelding). Het product is dan niet de losse data, maar **ons rapport** dat het samenvoegt (zoals woningcheck.nl €6,95–29,95). Inkoop €0.
-Bronnen (licentie per bron vóór gebruik nog bevestigen):
+Licenties bevestigd (24 nov, primaire bronnen/NGR-metadata) — alle commercieel bruikbaar, ook in betaald rapport, tenzij anders:
+- CC0/PDM (niets vermelden): BAG, AHN, RWS overstromingen, RIVM-data (geen RIVM-plaatjes!)
+- CC BY 4.0 (bron noemen + link licentie + "bewerkt"): 3D BAG ("© 3DBAG by tudelft3d and 3DGI", link docs.3dbag.nl/en/copyright), Kadastrale kaart ("Kadaster"), CBS (niet suggereren dat CBS het onderschrijft), RCE, Klimaateffectatlas ("Klimaateffectatlas, 2026"; funderingsrisico zelf "verre van compleet" → voorbehoud tonen), DSO (gratis key, fair use), luchtfoto (beeldmateriaal.nl)
+- EP-online: gratis key (KvK), per adres op een site mag, bulk doorleveren niet
+- Bodemloket: geen licentie gevonden → gebruik BRO bodemverontreiniging (CC0)
+- **WOZ-waardeloket: NIET gebruiken** — automatisch ophalen en doorgeven verboden; alleen linken.
+Voorbeeldrapport (echte data, Gouda): solvari-leads repo, projecten/wiewoonteropditadres/voorbeeld-kopersrapport.html
+Bronnen:
 - BAG (CC0): bouwjaar, m², gebruik, aantal woningen in pand
 - 3D BAG (CC BY 4.0): dakvorm, dak-m², hoogte, gevel-m² → zonnepotentieel, isolatie-m²
 - AHN hoogtekaart (CC0): ligging, hoogte t.o.v. omgeving
@@ -185,3 +192,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 24 nov — Ads-sessie: Kadaster maatwerk-API's en prijzen toegevoegd.
 - 24 nov — Ads-sessie: Kadaster-voorwaarden doorverkoop toegevoegd (overeenkomst nodig).
 - 24 nov — Ads-sessie: idee betaald woningrapport uit open data toegevoegd.
+- 24 nov — Ads-sessie: licenties open data bevestigd, WOZ-waardeloket uitgesloten, voorbeeld kopersrapport gemaakt.
