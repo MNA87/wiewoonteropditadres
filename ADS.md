@@ -84,7 +84,7 @@ Nodig: Mijn Kadaster + Kadata Internet, €40,20/jaar (met incasso), API-key per
 - **KadasterCheck API**: bouwjaar €0,01, woningtype (vrijstaand/2-onder-1-kap/hoek/tussen/appartement) €0,05, monument €0,05, oppervlakte €0,01, pandhoogte/inhoud/vloerhoogte NAP €0,05.
 - Inzicht via de kaart / Contractloos: **namen van eigenaren → niet gebruiken** (regel: nooit namen).
 Ter vergelijking concurrenten: koopsom €3,75, eigendom €9,95.
-**Kansen:** (1) gratis: energielabel + gemeentelijke lasten op elke adrespagina (geen RVO-sleutel nodig). (2) woningtype voor €0,05 → beter passend offerteblok. (3) koopsom (€0,45) als betaald product of als beloning na een offerte-aanvraag. **Eerst checken:** Kadaster-voorwaarden voor doorleveren/tonen aan derden; eigenaar beslist over abonnement.
+**Kansen:** (1) gratis: energielabel + gemeentelijke lasten op elke adrespagina (geen RVO-sleutel nodig). (2) woningtype voor €0,05 → beter passend offerteblok. (3) koopsom (€0,45) als betaald product of als beloning na een offerte-aanvraag. **Voorwaarden (kadaster.nl/algemene-leveringsvoorwaarden):** gebruik alleen voor het doel in de overeenkomst; doorverkopen aan derden alleen als dat **in de overeenkomst is afgesproken** (met eigen voorwaarden); persoonsgegevens niet in commerciële producten; mogelijk bronvermelding verplicht; niet doen alsof je namens het Kadaster handelt. → Eerst bij Kadaster vragen naar een overeenkomst voor doorlevering (zoals kadastercheck die heeft). Niets bouwen voor dat er is.
 
 ## Te doen
 - [x] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
@@ -165,3 +165,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 24 nov — Ads-sessie: concurrentie (woninginformatie.nl e.a.) en verdienkansen toegevoegd.
 - 24 nov — Ads-sessie: eigen databronnen per adres getest (WOZ, 3D BAG-dak, perceel, monumenten, energielabel).
 - 24 nov — Ads-sessie: Kadaster maatwerk-API's en prijzen toegevoegd.
+- 24 nov — Ads-sessie: Kadaster-voorwaarden doorverkoop toegevoegd (overeenkomst nodig).
