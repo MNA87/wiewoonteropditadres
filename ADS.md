@@ -60,6 +60,13 @@ Gedrag:
 - In de footer een link "Cookie-instellingen" die het venster opnieuw opent (keuze wijzigen even makkelijk als kiezen).
 - Privacyverklaring aanvullen: cookie `ww_gc`, en dat bij akkoord de advertentie-klik-ID aan offertes.kvinl.nl wordt doorgegeven om te meten welke advertenties werken.
 
+## Concurrentie en verdienkansen (Ads-sessie, 24 nov)
+- **woninginformatie.nl** (sinds apr 2025) en zustersites **woningcheck.nl**, **kadastercheck.nl**, **koopsomopvragen.nl**, energielabelcheck.nl: zelfde idee, maar met betaalmuur. Gratis: BAG + energielabel. Betaald: rapport €6,95 / woningwaarde €21,95 / compleet incl. Kadaster €29,95–37,50; los bij kadastercheck: eigendomsinformatie €9,95, hypotheekinfo €9,95, kadastrale kaart €6,95; koopsom €3,75. Ze adverteren in Google Ads (AW-tag op de site).
+- **Onze sterke punten**: alles gratis, vergunningen in de buurt, luchtfoto/straatbeeld, verduurzaming.
+- **Partnerprogramma**: geen openbaar affiliateprogramma gevonden bij kadastercheck/woningcheck (alleen hallo@kadastercheck.nl). De eigenaar kan een samenwerking voorstellen (vergoeding per verkocht document via onze Kadaster-knop). Pas na akkoord in de site verwerken, met `rel="sponsored"`.
+- **WOZ-bezwaar**: sinds 2024 gaat de kostenvergoeding naar de inwoner; no-cure-no-pay-bureaus verdienen minder → als partner minder interessant (staat al als optie via `PARTNER_WOZ_URL`).
+- **Google Ads**: op `[wie woont er op dit adres]` heeft Google geen biedgegevens → waarschijnlijk (bijna) geen advertenties. Voorstel aan de eigenaar: extra exacte groepen `[woz waarde opzoeken]` (±6.600/mnd, €0,14–0,31) en `[bouwjaar huis opzoeken]` (±140/mnd, €0,07–0,19) naar de bestaande gidspagina's. Eigenaar beslist.
+
 ## Te doen
 - [x] YOOST: zet je eigen voorstel voor de Google-advertentie (koppen, beschrijvingen, zoekwoorden, ideeën) hieronder in een kopje "Voorstel YOOST". De Ads-sessie heeft het nog niet gezien en vergelijkt het met de campagne die nu klaarstaat.
 - [ ] YOOST: cookiemelding **in het midden met grijze achtergrond**, precies zoals hierboven (correctie 23 nov: niet onderin), privacyverklaring aanvullen. Laat het de eigenaar zien voor live.
@@ -136,3 +143,4 @@ bsn, geboortedatum. Daarna dagelijks de zoektermen nakijken en ongewenste varian
 - 23 nov — YOOST: cookiemelding live (alleen bij gclid/gbraid/wbraid, balk onderin, Akkoord / Alleen noodzakelijk even groot, cookie `ww_gc` 180 dagen). Zonder akkoord geen gclid naar offertes.kvinl.nl; met akkoord `&gclid=…&gc=yes`. Privacyverklaring aangevuld (/privacy/#cookies).
 - 23 nov — YOOST: cookiemelding op verzoek van de eigenaar in het midden (als kaart, zoals de laadpaalpagina's, met twee gevulde knoppen), maar direct onder de zoekbalk zodat zoekbalk en knop zichtbaar blijven. Grijze laag over de pagina vanaf net onder de zoekbalk (zoekbalk en knop blijven licht en bruikbaar). Op kleine schermen compact met "Weigeren". Wijkt af van "balk onderin" hierboven: eigenaar besliste.
 - 24 nov — YOOST: testlink `?cookietest=1` toont de cookiemelding altijd (Safari privé haalt gclid weg); de keuze wordt dan niet bewaard. Geen effect op echte bezoekers.
+- 24 nov — Ads-sessie: concurrentie (woninginformatie.nl e.a.) en verdienkansen toegevoegd.
